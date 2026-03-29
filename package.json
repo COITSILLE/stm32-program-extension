@@ -3,6 +3,14 @@
   "displayName": "STM32 One-Click Program",
   "description": "Program STM32 using STM32CubeProgrammer CLI with a single command.",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/COITSILLE/stm32-program-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/COITSILLE/stm32-program-extension/issues"
+  },
+  "homepage": "https://github.com/COITSILLE/stm32-program-extension#readme",
   "engines": {
     "vscode": "^1.74.0"
   },
