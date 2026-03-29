@@ -1,0 +1,104 @@
+{
+  "name": "stm32-one-click-program",
+  "displayName": "STM32 One-Click Program",
+  "description": "Program STM32 using STM32CubeProgrammer CLI with a single command.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Debuggers"],
+  "extensionDependencies": [
+    "ms-vscode.cmake-tools"
+  ],
+  "activationEvents": [
+    "onCommand:STM32Program1Click.program",
+    "onCommand:STM32Program1Click.programWithBuild",
+    "onCommand:STM32Program1Click.selectProgrammerPath",
+    "onCommand:STM32Program1Click.toggleResetAfterProgram",
+    "workspaceContains:**/*.ioc"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "STM32Program1Click.program",
+        "title": "STM32Program1Click: Program (No Build)",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "STM32Program1Click.programWithBuild",
+        "title": "STM32Program1Click: Build & Program",
+        "icon": "$(run-all)"
+      },
+      {
+        "command": "STM32Program1Click.selectProgrammerPath",
+        "title": "STM32Program1Click: Select CubeProgrammer Path"
+      },
+      {
+        "command": "STM32Program1Click.toggleResetAfterProgram",
+        "title": "STM32Program1Click: Toggle Reset After Program"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "STM32Program1Click.program",
+          "group": "navigation",
+          "when": "resourceExtname == .c || resourceExtname == .cpp || resourceExtname == .h"
+        }
+      ],
+      "statusBarItem": [
+        {
+          "command": "STM32Program1Click.program",
+          "group": "stm32"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "STM32Program1Click.program",
+        "key": "ctrl+alt+f",
+        "mac": "cmd+alt+f",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "STM32Program1Click.programWithBuild",
+        "key": "ctrl+alt+b",
+        "mac": "cmd+alt+b"
+      }
+    ],
+    "configuration": {
+      "title": "STM32 One-Click Program",
+      "properties": {
+        "STM32Program1Click.programmerPath": {
+          "type": "string",
+          "default": "",
+          "description": "STM32CubeProgrammer CLI path (STM32_Programmer_CLI.exe)"
+        },
+        "STM32Program1Click.interface": {
+          "type": "string",
+          "default": "SWD",
+          "enum": ["SWD", "JTAG"],
+          "description": "Debug interface type"
+        },
+        "STM32Program1Click.autoBuild": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically build before programming"
+        },
+        "STM32Program1Click.resetAfterProgram": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reset after programming"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "vsce": "^2.15.0"
+  }
+}
