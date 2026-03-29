@@ -1,6 +1,7 @@
 {
   "name": "stm32-one-click-program",
   "displayName": "STM32 One-Click Program",
+  "icon": "image/icon.png",
   "description": "Program STM32 using STM32CubeProgrammer CLI with a single command.",
   "version": "1.0.0",
   "repository": {
