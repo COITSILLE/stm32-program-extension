@@ -4,17 +4,15 @@ Program STM32 MCUs directly from VS Code using STM32CubeProgrammer CLI.
 
 This extension provides one-click programming, optional CMake build integration, and a configurable reset-after-program behavior.
 
+
 ## Features
 
 - Program firmware to STM32 from VS Code.
-- Build with CMake Tools, then program.
-- Auto-detect STM32CubeProgrammer CLI path (or set it manually).
 - Toggle reset-after-program quickly.
 - Status bar button for fast access.
 
 ## Requirements
 
-- VS Code 1.74.0 or later.
 - STM32CubeProgrammer installed.
 - CMake Tools extension (`ms-vscode.cmake-tools`) for Build & Program.
 - A workspace that contains generated `.elf` or `.hex` outputs.
@@ -23,22 +21,20 @@ This extension provides one-click programming, optional CMake build integration,
 
 Open Command Palette and run:
 
-- `STM32Program1Click: Program (No Build)`
-- `STM32Program1Click: Build & Program`
-- `STM32Program1Click: Select CubeProgrammer Path`
-- `STM32Program1Click: Toggle Reset After Program`
+- `STM32-Program-1-Click: Program (No Build)`
+- `STM32-Program-1-Click: Build & Program`
+- `STM32-Program-1-Click: Select CubeProgrammer Path`
+- `STM32-Program-1-Click: Toggle Reset After Program`
 
 ## Configuration
 
-Settings namespace: `STM32Program1Click`
+Settings namespace: `STM32-Program-1-Click`
 
-- `STM32Program1Click.programmerPath`
-  - Path to `STM32_Programmer_CLI.exe` (or CLI binary on Linux).
-- `STM32Program1Click.interface`
+- `STM32-Program-1-Click.programmerPath`
+  - Path to `STM32_Programmer_CLI.exe`.
+- `STM32-Program-1-Click.interface`
   - Interface type: `SWD` or `JTAG`.
-- `STM32Program1Click.autoBuild`
-  - Reserved for workflow preference (current command behavior is explicit by command choice).
-- `STM32Program1Click.resetAfterProgram`
+- `STM32-Program-1-Click.resetAfterProgram`
   - If `true`, extension appends `-rst` after programming.
 
 ## Typical Workflow
@@ -46,31 +42,22 @@ Settings namespace: `STM32Program1Click`
 ### Program only
 
 1. Build your project using your existing flow.
-2. Run `STM32Program1Click: Program (No Build)`.
+2. Run `STM32-Program-1-Click: Program (No Build)`.
 
 ### Build and program
 
 1. Ensure CMake project is available (`CMakeLists.txt` exists).
-2. Run `STM32Program1Click: Build & Program`.
+2. Run `STM32-Program-1-Click: Build & Program`.
 3. Extension runs:
    - `cmake.configure`
    - `cmake.build`
    - STM32CubeProgrammer CLI program command
 
-## Output and Verification
-
-Programming output is written to the output channel:
-
-- Output channel name: `STM32 Programmer`
-
-On success, the extension checks for verification text:
-- `Download verified successfully`
-
 ## Troubleshooting
 
 ### STM32CubeProgrammer not found
 
-- Run `STM32Program1Click: Select CubeProgrammer Path`.
+- Run `STM32-Program-1-Click: Select CubeProgrammer Path`.
 - Or install STM32CubeProgrammer from ST website.
 
 ### Build & Program fails before programming

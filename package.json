@@ -4,7 +4,7 @@
   "displayName": "STM32 One-Click Program",
   "icon": "image/icon.png",
   "description": "Program STM32 using STM32CubeProgrammer CLI with a single command.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/COITSILLE/stm32-program-extension.git"
@@ -16,63 +16,65 @@
   "engines": {
     "vscode": "^1.74.0"
   },
-  "categories": ["Debuggers"],
+  "categories": [
+    "Debuggers"
+  ],
   "extensionDependencies": [
     "ms-vscode.cmake-tools"
   ],
   "activationEvents": [
-    "onCommand:STM32Program1Click.program",
-    "onCommand:STM32Program1Click.programWithBuild",
-    "onCommand:STM32Program1Click.selectProgrammerPath",
-    "onCommand:STM32Program1Click.toggleResetAfterProgram",
+    "onCommand:STM32-Program-1-Click.program",
+    "onCommand:STM32-Program-1-Click.programWithBuild",
+    "onCommand:STM32-Program-1-Click.selectProgrammerPath",
+    "onCommand:STM32-Program-1-Click.toggleResetAfterProgram",
     "workspaceContains:**/*.ioc"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "STM32Program1Click.program",
-        "title": "STM32Program1Click: Program (No Build)",
+        "command": "STM32-Program-1-Click.program",
+        "title": "STM32-Program-1-Click: Program (No Build)",
         "icon": "$(zap)"
       },
       {
-        "command": "STM32Program1Click.programWithBuild",
-        "title": "STM32Program1Click: Build & Program",
+        "command": "STM32-Program-1-Click.programWithBuild",
+        "title": "STM32-Program-1-Click: Build & Program",
         "icon": "$(run-all)"
       },
       {
-        "command": "STM32Program1Click.selectProgrammerPath",
-        "title": "STM32Program1Click: Select CubeProgrammer Path"
+        "command": "STM32-Program-1-Click.selectProgrammerPath",
+        "title": "STM32-Program-1-Click: Select CubeProgrammer Path"
       },
       {
-        "command": "STM32Program1Click.toggleResetAfterProgram",
-        "title": "STM32Program1Click: Toggle Reset After Program"
+        "command": "STM32-Program-1-Click.toggleResetAfterProgram",
+        "title": "STM32-Program-1-Click: Toggle Reset After Program"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "STM32Program1Click.program",
+          "command": "STM32-Program-1-Click.program",
           "group": "navigation",
           "when": "resourceExtname == .c || resourceExtname == .cpp || resourceExtname == .h"
         }
       ],
       "statusBarItem": [
         {
-          "command": "STM32Program1Click.program",
+          "command": "STM32-Program-1-Click.program",
           "group": "stm32"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "STM32Program1Click.program",
+        "command": "STM32-Program-1-Click.program",
         "key": "ctrl+alt+f",
         "mac": "cmd+alt+f",
         "when": "editorTextFocus"
       },
       {
-        "command": "STM32Program1Click.programWithBuild",
+        "command": "STM32-Program-1-Click.programWithBuild",
         "key": "ctrl+alt+b",
         "mac": "cmd+alt+b"
       }
@@ -80,23 +82,21 @@
     "configuration": {
       "title": "STM32 One-Click Program",
       "properties": {
-        "STM32Program1Click.programmerPath": {
+        "STM32-Program-1-Click.programmerPath": {
           "type": "string",
           "default": "",
           "description": "STM32CubeProgrammer CLI path (STM32_Programmer_CLI.exe)"
         },
-        "STM32Program1Click.interface": {
+        "STM32-Program-1-Click.interface": {
           "type": "string",
           "default": "SWD",
-          "enum": ["SWD", "JTAG"],
+          "enum": [
+            "SWD",
+            "JTAG"
+          ],
           "description": "Debug interface type"
         },
-        "STM32Program1Click.autoBuild": {
-          "type": "boolean",
-          "default": false,
-          "description": "Automatically build before programming"
-        },
-        "STM32Program1Click.resetAfterProgram": {
+        "STM32-Program-1-Click.resetAfterProgram": {
           "type": "boolean",
           "default": true,
           "description": "Reset after programming"

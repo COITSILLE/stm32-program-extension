@@ -1,20 +1,21 @@
 const vscode = require('vscode');
 const fs = require('fs');
-const path = require('path');
 
 class PathDetector {
     constructor() {
         this.defaultPaths = [
             'C:\\Program Files\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin\\STM32_Programmer_CLI.exe',
             'C:\\Program Files (x86)\\STMicroelectronics\\STM32Cube\\STM32CubeProgrammer\\bin\\STM32_Programmer_CLI.exe',
-            '/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI',
-            '/opt/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin/STM32_Programmer_CLI',
         ];
     }
 
     async detect() {
+        if (process.platform !== 'win32') {
+            return null;
+        }
+
         // 1. ºÏ≤È≈‰÷√
-        const config = vscode.workspace.getConfiguration('STM32Program1Click');
+        const config = vscode.workspace.getConfiguration('STM32-Program-1-Click');
         const configuredPath = config.get('programmerPath');
         if (configuredPath && fs.existsSync(configuredPath)) {
             return configuredPath;
@@ -56,7 +57,7 @@ class PathDetector {
             canSelectFolders: false,
             canSelectMany: false,
             filters: {
-                'Executable': process.platform === 'win32' ? ['exe'] : ['*'],
+                'Executable': ['exe'],
                 'All Files': ['*']
             },
             title: 'Choose STM32_Programmer_CLI Executable'
@@ -64,7 +65,7 @@ class PathDetector {
 
         if (result && result[0]) {
             const selectedPath = result[0].fsPath;
-            const config = vscode.workspace.getConfiguration('STM32Program1Click');
+            const config = vscode.workspace.getConfiguration('STM32-Program-1-Click');
             await config.update('programmerPath', selectedPath, true);
             vscode.window.showInformationMessage(`Path set to: ${selectedPath}`);
             return selectedPath;

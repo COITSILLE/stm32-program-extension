@@ -18,26 +18,26 @@ function activate(context) {
     statusBarManager = new StatusBarManager();
 
     // 注册命令
-    let disposableProgram = vscode.commands.registerCommand('STM32Program1Click.program', async () => {
+    let disposableProgram = vscode.commands.registerCommand('STM32-Program-1-Click.program', async () => {
         await programProvider.program(false); // 不构建，直接烧录
     });
 
-    let disposableProgramBuild = vscode.commands.registerCommand('STM32Program1Click.programWithBuild', async () => {
+    let disposableProgramBuild = vscode.commands.registerCommand('STM32-Program-1-Click.programWithBuild', async () => {
         await programProvider.program(true); // 先构建再烧录
     });
 
-    let disposableSelectPath = vscode.commands.registerCommand('STM32Program1Click.selectProgrammerPath', async () => {
+    let disposableSelectPath = vscode.commands.registerCommand('STM32-Program-1-Click.selectProgrammerPath', async () => {
         await pathDetector.manualSelectPath();
     });
 
-    let disposableToggleReset = vscode.commands.registerCommand('STM32Program1Click.toggleResetAfterProgram', async () => {
+    let disposableToggleReset = vscode.commands.registerCommand('STM32-Program-1-Click.toggleResetAfterProgram', async () => {
         await programProvider.toggleResetAfterProgram();
     });
 
     // 监听配置变化
     context.subscriptions.push(
         vscode.workspace.onDidChangeConfiguration(e => {
-            if (e.affectsConfiguration('STM32Program1Click')) {
+            if (e.affectsConfiguration('STM32-Program-1-Click')) {
                 programProvider.refreshConfig();
             }
         })

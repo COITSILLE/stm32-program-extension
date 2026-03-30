@@ -6,12 +6,12 @@ const fs = require('fs');
 class ProgramProvider {
     constructor(pathDetector) {
         this.pathDetector = pathDetector;
-        this.config = vscode.workspace.getConfiguration('STM32Program1Click');
+        this.config = vscode.workspace.getConfiguration('STM32-Program-1-Click');
         this.outputChannel = vscode.window.createOutputChannel('STM32 Programmer');
     }
 
     refreshConfig() {
-        this.config = vscode.workspace.getConfiguration('STM32Program1Click');
+        this.config = vscode.workspace.getConfiguration('STM32-Program-1-Click');
     }
 
     async toggleResetAfterProgram() {
