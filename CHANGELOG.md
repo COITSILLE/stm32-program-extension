@@ -1,16 +1,19 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+## [1.0.2] - 2026-03-30
+- Removed redunctant parts in documentation.
 
 ## [1.0.1] - 2026-03-30
 
 ### Changed
+- Add CHANGELOG
 - Unified command and settings naming in documentation to `STM32-Program-1-Click`.
 
 ### Removed
 - Removed unused setting `STM32-Program-1-Click.autoBuild` to avoid confusion.
 - Removed non-Windows default programmer path detection logic.
-- Removed redunctant parts in documentation.
+
 
 ### Fixed
 - Fixed status bar event subscription lifecycle by disposing all registered listeners.
